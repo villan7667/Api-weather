@@ -1,50 +1,164 @@
 /* its me villan 7667 */
-body{
+/* v2.1.1 */
+body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "poppins";
-    color: #fff;
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
     background: #343434;
 }
 
-.container{
-    width: 26%;
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 1rem;
 }
-.card{
+
+.card {
     background: #343434;
-    border-radius: 50px;
-    box-shadow: 5px 5px 10px #191b1b,-5px -5px 10px #595959;
-    padding: 3%;
+    border-radius: 40px;
+    box-shadow: 5px 5px 12px #7e47ff, -5px -5px 12px #4d4d4d;
+    padding: 2rem 1.5rem;
     text-align: center;
+    transition: 0.3s ease-in-out;
 }
-.card h4{
-    font-size: 4rem;
-    margin: 1rem 0;
-    font-weight: 400;
+
+input#cityInput {
+    padding: 12px 18px;
+    width: 70%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: "Poppins";
+    background: #2e2e2e;
+    box-shadow: inset 4px 4px 8px #1a1a1a, inset -4px -4px 8px #444;
+    color: #fff;
+    transition: all 0.3s ease;
 }
-img #icon{
-    width: 20px;
+
+input#cityInput:focus {
+    box-shadow: 0 0 18px #7e47ff;
+    background-color: #3a3a3a;
 }
-h6{
-   text-transform: capitalize;
-}
-button.refresh{
-    display: block;
-    width: 100px;
-    margin: 10px auto;
-    background: transparent;
-    border: 0;
+input#cityInput::placeholder {
     color: #9c9c9d;
-    font-size: 30px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 10px 4px 10px #252525,5px 5px 18px #4a4a4a;
-    cursor: pointer;
+    font-size: 1rem;
+    font-family: "Poppins";
 }
-button.refresh:hover{
-    box-shadow: inset 5px 5pc 10pc #252525,inset 5px 5px 10px #4a4a4a;
+
+button.search-btn {
+    padding: 18px 18px;
+    background: #2e2e2e;
+    border: none;
+    border-radius: 50%;
+    color: #7e47ff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 5px 5px 10px #1c1c1c, -5px -5px 10px #4a4a4a;
+    transition: 0.3s ease;
+}
+
+button.search-btn:hover {
+    color: #9c9c9d;
+    box-shadow: inset 5px 5px 10px #7e47ff, inset -5px -5px 10px #7e47ff;
+}
+
+button.search-btn:active {
+    box-shadow: inset 3px 3px 6px #1c1c1c, inset -3px -3px 6px #4a4a4a;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: #ffffff;
+}
+
+.card h6 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #7e47ff;
+}
+
+.card h4 {
+    font-size: 3.5rem;
+    margin: 0.5rem 0 1rem 0;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+img#icon {
+    width: 80px;
+  
+}
+
+button.refresh {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 1rem auto 0 auto;
+    background: transparent;
+    border: none;
+    color: #7e47ff;
+    font-size: 30px;
+    border-radius: 50%;
+    box-shadow: 10px 4px 10px #252525, 5px 5px 18px #4a4a4a;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button.refresh:hover {
+    box-shadow: inset 5px 5px 10px #7e47ff, inset -5px -5px 10px #7e47ff;
+    color: #9c9c9d;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .card {
+        border-radius: 30px;
+        padding: 1.5rem;
+    }
+
+    input#cityInput {
+        width: 100%;
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    button.search-btn {
+        margin: 10px auto;
+        display: block;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+    }
+
+    .card h4 {
+        font-size: 3rem;
+    }
+
+    .card h6 {
+        font-size: 1rem;
+    }
+
+    img#icon {
+        width: 60px;
+    }
+
+    button.refresh {
+        width: 80px;
+        height: 80px;
+        font-size: 26px;
+    }
 }
