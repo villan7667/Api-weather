@@ -2,48 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 </head>
 <!-- yes its me villan@7667  -->
-<!--  v2  -->
-
+<!--  v2.1.1  -->
 <body>
     <div class="container">
         <div class="card">
-            <h2><i class="fas fa-map-marker-alt"></i><span id="location"></span></h2>
+            <input type="text" id="cityInput" placeholder="Enter city..." />
+            <button onclick="getWeather()" class="search-btn"><i class="fas fa-search"></i></button>
+
+            <h2><i class="fas fa-map-marker-alt"></i> <span id="location"></span></h2>
             <h6 id="weather"></h6>
             <h4><span id="temp"></span><sup>o</sup>c</h4>
-            <img src="" id="icon">
-            <button onclick="window.location.reload()" class="refresh"><i class="fas fa-rotate-right"></i></button>
+            <img src="" id="icon" />
+            <button onclick="window.location.reload()" class="refresh">
+                <i class="fas fa-rotate-right"></i>
+            </button>
         </div>
     </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script type="text/javascript">
-    const link = "https://api.openweathermap.org/data/2.5/weather?q=jharkhand&appid=b680675cf4c318b0c42f602c38247a3b";
-    const request = new XMLHttpRequest();
-    request.open('GET', link, true);
-    request.onload = function () {
-        if (request.status >= 200 && request.status < 400) {
-            const obj = JSON.parse(this.response);
-            console.log(obj);
-            document.getElementById("location").textContent = obj.name;
-            document.getElementById("weather").textContent = obj.weather[0].description;
-            document.getElementById("temp").textContent = Math.round(obj.main.temp - 273.15);
-            document.getElementById("icon").src = `http://openweathermap.org/img/wn/${obj.weather[0].icon}.png`;
-        } else {
-            console.log("The City Data is not available");
+
+    <script>
+        function getWeather() {
+            const city = document.getElementById("cityInput").value || "Jharkhand";
+            const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b680675cf4c318b0c42f602c38247a3b`;
+
+            const request = new XMLHttpRequest();
+            request.open("GET", link, true);
+            request.onload = function () {
+                if (request.status >= 200 && request.status < 400) {
+                    const obj = JSON.parse(this.response);
+                    document.getElementById("location").textContent = obj.name;
+                    document.getElementById("weather").textContent = obj.weather[0].description;
+                    document.getElementById("temp").textContent = Math.round(obj.main.temp - 273.15);
+                    document.getElementById("icon").src = `http://openweathermap.org/img/wn/${obj.weather[0].icon}.png`;
+                } else {
+                    alert("City not found. Please try again.");
+                }
+            };
+            request.onerror = function () {
+                alert("Request failed. Please check your connection.");
+            };
+            request.send();
         }
-    };
-    request.onerror = function () {
-        console.log("Request failed");
-    };
-    request.send();
-</script>
+        window.onload = getWeather;
+        document.getElementById("cityInput").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                getWeather();
+            }
+        });
+    </script>
+</body>
 
 </html>
