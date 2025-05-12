@@ -48,7 +48,7 @@ input#cityInput:focus {
     background-color: #3a3a3a;
 }
 input#cityInput::placeholder {
-    color: #9c9c9d;
+    color: #7e47ff;
     font-size: 1rem;
     font-family: "Poppins";
 }
