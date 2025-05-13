@@ -130,7 +130,7 @@ button.refresh:hover {
     }
 
     input#cityInput {
-        width: 100%;
+        width: 80%;
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
     }
